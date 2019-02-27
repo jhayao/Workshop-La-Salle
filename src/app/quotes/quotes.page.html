@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title><ion-icon (click)="backButtonOnClick()"name="arrow-round-back" id="icon" float-left></ion-icon>{{currentGroup.category}} quotes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let quote of currentGroup.quotes">
+      <ion-label (click)="showQuotes(quote)">
+        <h2>{{quote.person}}</h2>
+        <p>{{quote.text}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  
+</ion-content>

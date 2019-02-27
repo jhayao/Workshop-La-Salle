@@ -1,9 +1,47 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab Three
+    <ion-title color="primary">
+      Quotes
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+    
+
+    <ion-list>
+        <ion-list-header >
+          <ion-text color="secondary">
+            <h2>Favorites</h2>
+          </ion-text>
+            <ion-badge id="badges" color="success" float-right>{{favorites.length}}</ion-badge>
+          </ion-list-header>
+
+      <ion-item *ngFor="let quote of favorites">  
+      <ion-label (click)="showQuotes(quote)">
+        <h2>
+          {{quote.person}}
+        </h2>
+        <p>
+        {{quote.text}}
+        </p>
+      </ion-label>
+    </ion-item>
+
+
+
+      <ion-list-header><ion-text color="warning"><h2>Available Qoutes</h2></ion-text></ion-list-header>
+      <ion-item *ngFor="let quoteGroup of quotesGroup; let i = index">
+        <ion-avatar>
+          <ion-icon size="large" id ="icons" color="{{quoteGroup.color}}" name="{{quoteGroup.icon}}"></ion-icon>
+        </ion-avatar>
+        <ion-label (click)="ionLabelOnClick(i)">
+        <h2 >{{quoteGroup.category}}<ion-badge float-right color="primary">{{quoteGroup.quotes.length}}</ion-badge></h2>
+        <p>
+          {{quoteGroup.description}}
+        </p>
+        
+      </ion-label>
+      </ion-item>    
+    </ion-list>
+</ion-content>
